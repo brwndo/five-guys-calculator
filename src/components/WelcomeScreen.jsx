@@ -17,19 +17,19 @@ export default function WelcomeScreen({ onStart }) {
 
         {/* Features */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12 max-w-3xl mx-auto">
-            <div className="border-2 border-fg-gray-300 rounded-lg p-6">
-            <h3 className="font-heading text-lg font-bold mb-2">Customize Your Meal</h3>
-            <p className="text-sm text-gray-600">Pick your burger, toppings, fries, and more</p>
+            <div className="border border-fg-gray-300 rounded-lg p-6">
+            <h3 className="font-heading text-lg font-bold mb-2">01</h3>
+            <p className="text-sm font-bold text-gray-700">Set your cut or bulk goal</p>
           </div>
           
-          <div className="border-2 border-fg-gray-300 rounded-lg p-6">
-            <h3 className="font-heading text-lg font-bold mb-2">Get Your Plan</h3>
-            <p className="text-sm text-gray-600">See exactly how often you can indulge</p>
+          <div className="border border-fg-gray-300 rounded-lg p-6">
+            <h3 className="font-heading text-lg font-bold mb-2">02</h3>
+            <p className="text-sm font-bold text-gray-700">Build your favorite burger meal</p>
           </div>
           
-          <div className="border-2 border-fg-gray-300 rounded-lg p-6">
-            <h3 className="font-heading text-lg font-bold mb-2">Get Shredded</h3>
-            <p className="text-sm text-gray-600">Well, hopefully...</p>
+          <div className="border border-fg-gray-300 rounded-lg p-6">
+            <h3 className="font-heading text-lg font-bold mb-2">03</h3>
+            <p className="text-sm font-bold text-gray-700">Calculate Your BPW (Burger Per Week)</p>
           </div>
         </div>
 
@@ -38,7 +38,7 @@ export default function WelcomeScreen({ onStart }) {
           onClick={onStart}
           className="btn-primary text-lg sm:text-xl px-12 py-5"
         >
-          Calculate My Burger Allowance
+          Calculate My BPW
         </button>
 
       </div>
