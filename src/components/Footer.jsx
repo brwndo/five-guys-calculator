@@ -6,8 +6,7 @@ export default function Footer() {
         <div className="mb-6">
           <p className="text-xs text-gray-500 mb-3">
             <strong>Disclaimer:</strong> This calculator is for entertainment and educational purposes only and is not medical advice. 
-            The results are estimates based on standard metabolic formulas and should not replace professional medical guidance. 
-            Always consult with a healthcare provider or registered dietitian before starting any weight loss or weight gain program or making significant dietary changes. Calorie values are based on Five Guys official nutritional information. For official dietary guidelines, visit: <a
+            The results are estimates based on standard metabolic formulas and should not replace professional medical guidance. For official dietary guidelines, visit: <a
               href="https://www.fda.gov/food/nutrition-education-resources-materials/dietary-guidelines-americans"
               target="_blank"
               rel="noopener noreferrer"

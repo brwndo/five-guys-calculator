@@ -329,8 +329,8 @@ export function getHumorousMessage(burgersPerWeek, totalBurgers, weeks, mealTooB
   }
   if (burgersPerWeek >= 3) {
     return isBulk
-      ? `Holy burger heaven! You can have Five Guys ${burgersPerWeek} times a week and STILL hit your gain goal. That's practically a lifestyle. 🍔`
-      : `Holy burger heaven! You can have Five Guys ${burgersPerWeek} times a week and STILL hit your goal. That's practically a lifestyle. 🍔`;
+      ? `Holy burger heaven! You can have Five Guys ${burgersPerWeek} times a week and STILL hit your gain goal.`
+      : `Holy burger heaven! You can have Five Guys ${burgersPerWeek} times a week and STILL hit your goal.`;
   } else if (burgersPerWeek >= 1) {
     return isBulk
       ? `Good news: You can treat yourself ${burgersPerWeek} times a week. That's ${totalBurgers} meals over your ${weeks}-week bulk. Math doesn't lie. 🎉`
