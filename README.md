@@ -61,6 +61,26 @@ To preview the production build locally:
 npm run preview
 ```
 
+Note: The app is configured for GitHub Pages. Use `npm run preview` to test the same base path locally (`/five-guys-calculator/`).
+
+## 🌐 Deploy to GitHub Pages
+
+The project is ready to publish on GitHub Pages.
+
+1. **Push the repo to GitHub** (if you haven’t already).
+
+2. **Turn on GitHub Pages**
+   - Open the repo on GitHub → **Settings** → **Pages**.
+   - Under **Build and deployment**, set **Source** to **GitHub Actions**.
+
+3. **Deploy**
+   - Push to the `main` branch. The workflow in `.github/workflows/deploy-pages.yml` will build and deploy the site.
+   - After it runs, the site will be at:  
+     `https://<your-username>.github.io/five-guys-calculator/`
+
+4. **Optional: custom domain**  
+   Configure it in **Settings → Pages** if you use one.
+
 ## 🎨 Design System
 
 The app uses the official Five Guys design system:

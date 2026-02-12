@@ -1,0 +1,72 @@
+{
+  "burgers": [
+    {"id": "hamburger", "name": "Hamburger", "description": "2 patties", "totalCalories": 840},
+    {"id": "cheeseburger", "name": "Cheeseburger", "description": "2 patties with cheese", "totalCalories": 980},
+    {"id": "bacon-burger", "name": "Bacon Burger", "description": "2 patties with bacon", "totalCalories": 920},
+    {"id": "bacon-cheeseburger", "name": "Bacon Cheeseburger", "description": "2 patties with bacon and cheese", "totalCalories": 1060},
+    {"id": "little-hamburger", "name": "Little Hamburger", "description": "1 patty", "totalCalories": 540},
+    {"id": "little-cheeseburger", "name": "Little Cheeseburger", "description": "1 patty with cheese", "totalCalories": 610},
+    {"id": "little-bacon-burger", "name": "Little Bacon Burger", "description": "1 patty with bacon", "totalCalories": 620},
+    {"id": "little-bacon-cheeseburger", "name": "Little Bacon Cheeseburger", "description": "1 patty with bacon and cheese", "totalCalories": 690}
+  ],
+  "hotdogs": [
+    {"id": "hot-dog", "name": "Hot Dog", "description": "All-beef hot dog", "totalCalories": 520},
+    {"id": "cheese-dog", "name": "Cheese Dog", "description": "Hot dog with cheese", "totalCalories": 590},
+    {"id": "bacon-dog", "name": "Bacon Dog", "description": "Hot dog with bacon", "totalCalories": 600},
+    {"id": "bacon-cheese-dog", "name": "Bacon Cheese Dog", "description": "Hot dog with bacon and cheese", "totalCalories": 670}
+  ],
+  "sandwiches": [
+    {"id": "patty-melt", "name": "Patty Melt", "description": "Burger patty on grilled bread with cheese", "totalCalories": 790},
+    {"id": "veggie-sandwich", "name": "Veggie Sandwich", "description": "Grilled veggie sandwich", "totalCalories": 265},
+    {"id": "cheese-veggie-sandwich", "name": "Cheese Veggie Sandwich", "description": "Veggie sandwich with cheese", "totalCalories": 415},
+    {"id": "grilled-cheese", "name": "Grilled Cheese", "description": "Toasted cheese sandwich", "totalCalories": 470},
+    {"id": "blt", "name": "BLT", "description": "Bacon, lettuce, tomato", "totalCalories": 600}
+  ],
+  "toppings": [
+    {"id": "mayo", "name": "Mayo", "calories": 107, "category": "sauce"},
+    {"id": "lettuce", "name": "Lettuce", "calories": 3, "category": "veggie"},
+    {"id": "pickles", "name": "Pickles", "calories": 0, "category": "veggie"},
+    {"id": "tomatoes", "name": "Tomatoes", "calories": 8, "category": "veggie"},
+    {"id": "grilled-onions", "name": "Grilled Onions", "calories": 11, "category": "veggie"},
+    {"id": "grilled-mushrooms", "name": "Grilled Mushrooms", "calories": 6, "category": "veggie"},
+    {"id": "ketchup", "name": "Ketchup", "calories": 30, "category": "sauce"},
+    {"id": "mustard", "name": "Mustard", "calories": 0, "category": "sauce"},
+    {"id": "relish", "name": "Relish", "calories": 16, "category": "sauce"},
+    {"id": "onions", "name": "Onions", "calories": 11, "category": "veggie"},
+    {"id": "jalapenos", "name": "Jalapeño Peppers", "calories": 3, "category": "veggie"},
+    {"id": "green-peppers", "name": "Green Peppers", "calories": 3, "category": "veggie"},
+    {"id": "a1-sauce", "name": "A.1.® Sauce", "calories": 15, "category": "sauce"},
+    {"id": "bbq-sauce", "name": "BBQ Sauce", "calories": 49, "category": "sauce"},
+    {"id": "hot-sauce", "name": "Hot Sauce", "calories": 0, "category": "sauce"},
+    {"id": "extra-cheese", "name": "Extra Cheese", "calories": 70, "category": "extra"},
+    {"id": "extra-bacon", "name": "Extra Bacon", "calories": 70, "category": "extra"}
+  ],
+  "fries": [
+    {"id": "none", "name": "No Fries", "calories": 0, "style": "none"},
+    {"id": "little-fries", "name": "Little Fries", "calories": 526, "style": "regular"},
+    {"id": "regular-fries", "name": "Regular Fries", "calories": 953, "style": "regular"},
+    {"id": "large-fries", "name": "Large Fries", "calories": 1314, "style": "regular"},
+    {"id": "little-cajun-fries", "name": "Little Cajun Fries", "calories": 540, "style": "cajun"},
+    {"id": "regular-cajun-fries", "name": "Regular Cajun Fries", "calories": 967, "style": "cajun"},
+    {"id": "large-cajun-fries", "name": "Large Cajun Fries", "calories": 1328, "style": "cajun"}
+  ],
+  "drinks": [
+    {"id": "none", "name": "No Drink", "calories": 0, "description": "No drink"},
+    {"id": "water", "name": "Water", "calories": 0, "description": "Zero calorie option"},
+    {"id": "diet-soda", "name": "Diet Soda (any size)", "calories": 0, "description": "Zero calorie option"},
+    {"id": "small-soda", "name": "Small Soda (16 oz)", "calories": 200, "description": "Average regular soda"},
+    {"id": "regular-soda", "name": "Regular Soda (22 oz)", "calories": 275, "description": "Average regular soda"},
+    {"id": "large-soda", "name": "Large Soda (32 oz)", "calories": 400, "description": "Average regular soda"}
+  ],
+  "milkshakes": [
+    {"id": "none", "name": "No Shake", "calories": 0, "description": "No shake"},
+    {"id": "vanilla-shake", "name": "Vanilla Shake", "calories": 670, "description": "Base vanilla shake"},
+    {"id": "chocolate-shake", "name": "Chocolate Shake", "calories": 803, "description": "Vanilla base + chocolate mix-in"},
+    {"id": "strawberry-shake", "name": "Strawberry Shake", "calories": 760, "description": "Vanilla base + strawberry mix-in"},
+    {"id": "banana-shake", "name": "Banana Shake", "calories": 830, "description": "Vanilla base + banana mix-in"},
+    {"id": "peanut-butter-shake", "name": "Peanut Butter Shake", "calories": 992, "description": "Vanilla base + peanut butter mix-in"},
+    {"id": "oreo-shake", "name": "Oreo® Shake", "calories": 1110, "description": "Vanilla base + Oreo cookie pieces + Oreo creme"},
+    {"id": "bacon-shake", "name": "Bacon Shake", "calories": 740, "description": "Vanilla base + bacon"},
+    {"id": "salted-caramel-shake", "name": "Salted Caramel Shake", "calories": 825, "description": "Vanilla base + salted caramel mix-in"}
+  ]
+}
