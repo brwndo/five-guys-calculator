@@ -12,12 +12,12 @@ function getMainItem(menuData, id) {
   return null
 }
 
-export default function MenuBuilder({ userInfo, onSubmit, onBack }) {
-  const [selectedMain, setSelectedMain] = useState('')
-  const [selectedToppings, setSelectedToppings] = useState([])
-  const [selectedFries, setSelectedFries] = useState('none')
-  const [selectedDrink, setSelectedDrink] = useState('none')
-  const [selectedShake, setSelectedShake] = useState('none')
+export default function MenuBuilder({ userInfo, initialData, onSubmit, onBack }) {
+  const [selectedMain, setSelectedMain] = useState(initialData?.main || '')
+  const [selectedToppings, setSelectedToppings] = useState(initialData?.toppings || [])
+  const [selectedFries, setSelectedFries] = useState(initialData?.fries || 'none')
+  const [selectedDrink, setSelectedDrink] = useState(initialData?.drink || 'none')
+  const [selectedShake, setSelectedShake] = useState(initialData?.shake || 'none')
   const [totalCalories, setTotalCalories] = useState(0)
 
   // Calculate total calories whenever selection changes

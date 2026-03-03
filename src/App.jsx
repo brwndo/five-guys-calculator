@@ -1,38 +1,106 @@
 import { useState } from 'react'
 import WelcomeScreen from './components/WelcomeScreen'
-import UserInfoForm from './components/UserInfoForm'
+import PersonalInfoForm from './components/PersonalInfoForm'
+import WeightGoalsForm from './components/WeightGoalsForm'
 import MenuBuilder from './components/MenuBuilder'
 import ResultsDashboard from './components/ResultsDashboard'
 import Footer from './components/Footer'
 
-function App() {
-  const [currentStep, setCurrentStep] = useState('welcome') // welcome, userInfo, menu, results
-  const [userInfo, setUserInfo] = useState(null)
-  const [mealSelection, setMealSelection] = useState(null)
-  const [results, setResults] = useState(null)
+function loadFromStorage(key) {
+  try {
+    const s = localStorage.getItem(key)
+    return s ? JSON.parse(s) : null
+  } catch {
+    return null
+  }
+}
 
-  const handleStartCalculator = () => {
-    setCurrentStep('userInfo')
+function getInitialStep() {
+  try {
+    const p = localStorage.getItem('fgc_personal_info')
+    const g = localStorage.getItem('fgc_weight_goals')
+    const m = localStorage.getItem('fgc_meal_selection')
+    if (p && g && m) return 'results'
+    if (p && g) return 'menu'
+    if (p) return 'weightGoals'
+  } catch {
+    // ignore
+  }
+  return 'welcome'
+}
+
+function App() {
+  const [currentStep, setCurrentStep] = useState(getInitialStep)
+  const [personalInfo, setPersonalInfo] = useState(() => loadFromStorage('fgc_personal_info'))
+  const [weightGoals, setWeightGoals] = useState(() => loadFromStorage('fgc_weight_goals'))
+  const [mealSelection, setMealSelection] = useState(() => loadFromStorage('fgc_meal_selection'))
+  const [editReturnTo, setEditReturnTo] = useState(null)
+
+  // Merged userInfo keeps ResultsDashboard and calculations.js unchanged
+  const userInfo = personalInfo && weightGoals ? { ...personalInfo, ...weightGoals } : null
+
+  const handleStartCalculator = () => setCurrentStep('personalInfo')
+
+  const handlePersonalInfoSubmit = (data) => {
+    localStorage.setItem('fgc_personal_info', JSON.stringify(data))
+    setPersonalInfo(data)
+    if (editReturnTo === 'results') {
+      setEditReturnTo(null)
+      setCurrentStep('results')
+    } else {
+      setCurrentStep('weightGoals')
+    }
   }
 
-  const handleUserInfoSubmit = (data) => {
-    setUserInfo(data)
-    setCurrentStep('menu')
+  const handleWeightGoalsSubmit = (data) => {
+    localStorage.setItem('fgc_weight_goals', JSON.stringify(data))
+    setWeightGoals(data)
+    if (editReturnTo === 'results') {
+      setEditReturnTo(null)
+      setCurrentStep('results')
+    } else {
+      setCurrentStep('menu')
+    }
   }
 
   const handleMealSelection = (meal) => {
+    localStorage.setItem('fgc_meal_selection', JSON.stringify(meal))
     setMealSelection(meal)
     setCurrentStep('results')
   }
 
-  const handleRecalculate = () => {
+  const handleEditPersonalInfo = () => {
+    setEditReturnTo('results')
+    setCurrentStep('personalInfo')
+  }
+
+  const handleEditWeightGoals = () => {
+    setEditReturnTo('results')
+    setCurrentStep('weightGoals')
+  }
+
+  const handleEditMeal = () => {
+    setEditReturnTo('results')
     setCurrentStep('menu')
   }
 
+  const handleEditCancel = () => {
+    setEditReturnTo(null)
+    setCurrentStep('results')
+  }
+
   const handleStartOver = () => {
-    setUserInfo(null)
+    try {
+      localStorage.removeItem('fgc_personal_info')
+      localStorage.removeItem('fgc_weight_goals')
+      localStorage.removeItem('fgc_meal_selection')
+    } catch {
+      // ignore
+    }
+    setPersonalInfo(null)
+    setWeightGoals(null)
     setMealSelection(null)
-    setResults(null)
+    setEditReturnTo(null)
     setCurrentStep('welcome')
   }
 
@@ -61,15 +129,28 @@ function App() {
           <WelcomeScreen onStart={handleStartCalculator} />
         )}
 
-        {currentStep === 'userInfo' && (
-          <UserInfoForm onSubmit={handleUserInfoSubmit} />
+        {currentStep === 'personalInfo' && (
+          <PersonalInfoForm
+            initialData={personalInfo}
+            onSubmit={handlePersonalInfoSubmit}
+            onBack={editReturnTo === 'results' ? handleEditCancel : null}
+          />
+        )}
+
+        {currentStep === 'weightGoals' && (
+          <WeightGoalsForm
+            initialData={weightGoals}
+            onSubmit={handleWeightGoalsSubmit}
+            onBack={editReturnTo === 'results' ? handleEditCancel : () => setCurrentStep('personalInfo')}
+          />
         )}
 
         {currentStep === 'menu' && (
           <MenuBuilder
             userInfo={userInfo}
+            initialData={mealSelection}
             onSubmit={handleMealSelection}
-            onBack={() => setCurrentStep('userInfo')}
+            onBack={editReturnTo === 'results' ? handleEditCancel : () => setCurrentStep('weightGoals')}
           />
         )}
 
@@ -77,7 +158,9 @@ function App() {
           <ResultsDashboard
             userInfo={userInfo}
             mealSelection={mealSelection}
-            onRecalculate={handleRecalculate}
+            onEditPersonalInfo={handleEditPersonalInfo}
+            onEditWeightGoals={handleEditWeightGoals}
+            onEditMeal={handleEditMeal}
             onStartOver={handleStartOver}
           />
         )}
