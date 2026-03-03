@@ -11,7 +11,7 @@ import {
   formatBurgerFrequency
 } from '../utils/calculations'
 
-export default function ResultsDashboard({ userInfo, mealSelection, onRecalculate, onStartOver }) {
+export default function ResultsDashboard({ userInfo, mealSelection, onEditPersonalInfo, onEditWeightGoals, onEditMeal, onStartOver }) {
   const goal = userInfo.goal || 'lose'
 
   // Calculate all the results
@@ -232,17 +232,19 @@ export default function ResultsDashboard({ userInfo, mealSelection, onRecalculat
         </div>
 
         {/* Action Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4">
-          <button
-            onClick={onRecalculate}
-            className="btn-secondary flex-1"
-          >
-            Change My Meal
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <button onClick={onEditPersonalInfo} className="btn-secondary">
+            Edit Personal Info
           </button>
-          <button
-            onClick={onStartOver}
-            className="btn-ghost flex-1"
-          >
+          <button onClick={onEditWeightGoals} className="btn-secondary">
+            Edit Weight Goals
+          </button>
+          <button onClick={onEditMeal} className="btn-secondary">
+            Edit My Meal
+          </button>
+        </div>
+        <div className="mt-4 text-center">
+          <button onClick={onStartOver} className="btn-ghost">
             Start Over
           </button>
         </div>

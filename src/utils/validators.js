@@ -1,4 +1,67 @@
 /**
+ * Validate personal information form inputs
+ * @param {object} formData - Personal info form data
+ * @returns {object} Validation errors
+ */
+export function validatePersonalInfo(formData) {
+  const errors = {};
+
+  if (!formData.age || formData.age < 18 || formData.age > 100) {
+    errors.age = 'Age must be between 18 and 100 years';
+  }
+
+  if (!formData.gender) {
+    errors.gender = 'Please select your gender';
+  }
+
+  if (!formData.heightFeet || formData.heightFeet < 4 || formData.heightFeet > 7) {
+    errors.height = 'Height must be between 4 and 7 feet';
+  }
+  if (formData.heightInches < 0 || formData.heightInches >= 12) {
+    errors.height = 'Inches must be between 0 and 11';
+  }
+
+  if (!formData.activityLevel) {
+    errors.activityLevel = 'Please select your activity level';
+  }
+
+  return errors;
+}
+
+/**
+ * Validate weight goals form inputs
+ * @param {object} formData - Weight goals form data
+ * @returns {object} Validation errors
+ */
+export function validateWeightGoals(formData) {
+  const errors = {};
+
+  if (!formData.goal || !['lose', 'gain'].includes(formData.goal)) {
+    errors.goal = 'Please select your goal (lose or gain weight)';
+  }
+
+  if (!formData.currentWeight || formData.currentWeight <= 0) {
+    errors.currentWeight = 'Please enter your current weight';
+  } else if (formData.currentWeight < 80 || formData.currentWeight > 500) {
+    errors.currentWeight = 'Weight must be between 80 and 500 lbs';
+  }
+
+  if (!formData.targetWeight || formData.targetWeight <= 0) {
+    errors.targetWeight = 'Please enter your target weight';
+  } else if (formData.goal === 'lose' && parseFloat(formData.targetWeight) >= parseFloat(formData.currentWeight)) {
+    errors.targetWeight = 'Target weight must be less than current weight for a cut';
+  } else if (formData.goal === 'gain' && parseFloat(formData.targetWeight) <= parseFloat(formData.currentWeight)) {
+    errors.targetWeight = 'Target weight must be greater than current weight for a bulk';
+  }
+
+  if (!formData.weeks || formData.weeks < 1 || formData.weeks > 52) {
+    errors.weeks = 'Timeframe must be between 1 and 52 weeks';
+  }
+
+  return errors;
+}
+
+/**
  * Validate user info form inputs
  * @param {object} formData - User form data
  * @returns {object} Validation errors
