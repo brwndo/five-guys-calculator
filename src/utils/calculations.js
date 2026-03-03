@@ -103,16 +103,10 @@ export function calculateDailyDeficit(currentWeight, targetWeight, weeks) {
  * @returns {object} Results including burgers per week, total burgers, and remaining calories
  */
 export function calculateBurgerFrequency(tdee, dailyDeficit, mealCalories, weeks) {
-  // #region agent log
-  fetch('http://127.0.0.1:7242/ingest/471ef067-e2fe-4887-9652-a1160cbdd17b',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'calculations.js:calculateBurgerFrequency',message:'inputs',data:{tdee, dailyDeficit, mealCalories, weeks, tdeeType:typeof tdee, dailyDeficitType:typeof dailyDeficit, mealCaloriesType:typeof mealCalories},timestamp:Date.now(),hypothesisId:'H1_H3'})}).catch(()=>{});
-  // #endregion
   // Weekly calorie budget to still hit the target deficit: (TDEE - deficit) per day × 7
   const weeklyBudget = 7 * (tdee - dailyDeficit);
   // Only "meal too big" when budget is positive and meal exceeds it; avoid flagging when plan is impossible (budget <= 0)
   const mealTooBig = weeklyBudget > 0 && mealCalories > weeklyBudget;
-  // #region agent log
-  fetch('http://127.0.0.1:7242/ingest/471ef067-e2fe-4887-9652-a1160cbdd17b',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'calculations.js:calculateBurgerFrequency',message:'weeklyBudget and comparison',data:{weeklyBudget, mealTooBig, dailyTargetIntake: tdee - dailyDeficit, runId:'post-fix'},timestamp:Date.now(),hypothesisId:'H2_H4_H5'})}).catch(()=>{});
-  // #endregion
 
   let mealsPerWeek;
   let weeklyMealCalories;
